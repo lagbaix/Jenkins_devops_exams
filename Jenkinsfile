@@ -46,6 +46,7 @@ pipeline {
 			  --kubeconfig /var/lib/jenkins/.kube/config \
                           --set movieService.image.tag=${DOCKER_TAG} \
                           --set castService.image.tag=${DOCKER_TAG} \
+			  --set service.nodePort=30007 \
                           --namespace dev --create-namespace
                     """
                 }
@@ -63,6 +64,7 @@ pipeline {
 			  --kubeconfig /var/lib/jenkins/.kube/config \
                           --set movieService.image.tag=${DOCKER_TAG} \
                           --set castService.image.tag=${DOCKER_TAG} \
+			  --set service.nodePort=30008 \
                           --namespace qa --create-namespace
                     """
                 }
@@ -80,6 +82,7 @@ pipeline {
 			  --kubeconfig /var/lib/jenkins/.kube/config \
                           --set movieService.image.tag=${DOCKER_TAG} \
                           --set castService.image.tag=${DOCKER_TAG} \
+			  --set service.nodePort=30009 \
                           --namespace staging --create-namespace
                     """
                 }
@@ -100,6 +103,7 @@ pipeline {
 			  --kubeconfig /var/lib/jenkins/.kube/config \
                           --set movieService.image.tag=${DOCKER_TAG} \
                           --set castService.image.tag=${DOCKER_TAG} \
+			  --set service.nodePort=30010 \
                           --namespace prod --create-namespace
                     """
                 }
