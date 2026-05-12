@@ -42,8 +42,6 @@ pipeline {
             steps {
                 script {
                     sh """
-                        mkdir -p .kube
-                        cat ${KUBECONFIG} > .kube/config
                         helm upgrade --install app-dev ./charts \
                           --set movieService.image.tag=${DOCKER_TAG} \
                           --set castService.image.tag=${DOCKER_TAG} \
