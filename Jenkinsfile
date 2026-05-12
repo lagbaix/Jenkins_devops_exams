@@ -59,9 +59,8 @@ pipeline {
             steps {
                 script {
                     sh """
-                        mkdir -p .kube
-                        cat ${KUBECONFIG} > .kube/config
                         helm upgrade --install app-qa ./charts \
+			  --kubeconfig /var/lib/jenkins/.kube/config \
                           --set movieService.image.tag=${DOCKER_TAG} \
                           --set castService.image.tag=${DOCKER_TAG} \
                           --namespace qa --create-namespace
@@ -77,9 +76,8 @@ pipeline {
             steps {
                 script {
                     sh """
-                        mkdir -p .kube
-                        cat ${KUBECONFIG} > .kube/config
                         helm upgrade --install app-staging ./charts \
+			  --kubeconfig /var/lib/jenkins/.kube/config \
                           --set movieService.image.tag=${DOCKER_TAG} \
                           --set castService.image.tag=${DOCKER_TAG} \
                           --namespace staging --create-namespace
@@ -98,9 +96,8 @@ pipeline {
                 }
                 script {
                     sh """
-                        mkdir -p .kube
-                        cat ${KUBECONFIG} > .kube/config
                         helm upgrade --install app-prod ./charts \
+			  --kubeconfig /var/lib/jenkins/.kube/config \
                           --set movieService.image.tag=${DOCKER_TAG} \
                           --set castService.image.tag=${DOCKER_TAG} \
                           --namespace prod --create-namespace
