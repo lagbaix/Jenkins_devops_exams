@@ -43,6 +43,7 @@ pipeline {
                 script {
                     sh """
                         helm upgrade --install app-dev ./charts \
+			  --kubeconfig /var/lib/jenkins/.kube/config \
                           --set movieService.image.tag=${DOCKER_TAG} \
                           --set castService.image.tag=${DOCKER_TAG} \
                           --namespace dev --create-namespace
